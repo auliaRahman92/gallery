@@ -1,0 +1,445 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap");
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+:root {
+  --bg-gray-800: #1f2937;
+  --blue-800: #1e40af;
+  --blue-500: #3b82f6;
+}
+
+body {
+  background-color: #1f2937;
+}
+
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  min-height: 100vh;
+}
+
+/* Content */
+
+.content {
+  padding-left: 120px;
+  color: #c7c7c7c9;
+  user-select: none;
+}
+
+.content h1 {
+  font-family: "Poppins", cursive;
+  font-size: clamp(2.5rem, 4vw, 6rem);
+  font-weight: 700;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 36px;
+  padding-left: 10px;
+}
+
+.content p {
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  line-height: 1.6;
+  padding-right: 100px;
+}
+
+.btn {
+  background-color: #f76591;
+  background-image: linear-gradient(-180deg, #86efac, #3b82f6);
+  font-size: clamp(0.8rem, 8vw, 0.9rem);
+  font-weight: 600;
+  color: #fff;
+  width: max-content;
+  outline: 0;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  margin-top: 26px;
+  text-align: center;
+  transform: scale(1);
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+}
+
+.btn:hover {
+  box-shadow: 0 4px 10px rgba(89, 104, 235, 0.5);
+  transform: scale(0.95);
+}
+
+/* Stacked Cards */
+
+.stack {
+  position: relative;
+}
+
+.card-home {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 500px;
+  border-radius: 2rem;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25),
+    0 15px 20px 0 rgba(0, 0, 0, 0.125);
+  transition: transform 0.6s;
+  user-select: none;
+}
+
+.card-home img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.card-home:nth-last-child(n + 5) {
+  --x: calc(-50% + 90px);
+  transform: translate(var(--x), -50%) scale(0.85);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.01);
+}
+
+.card-home:nth-last-child(4) {
+  --x: calc(-50% + 60px);
+  transform: translate(var(--x), -50%) scale(0.9);
+}
+
+.card-home:nth-last-child(3) {
+  --x: calc(-50% + 30px);
+  transform: translate(var(--x), -50%) scale(0.95);
+}
+
+.card-home:nth-last-child(2) {
+  --x: calc(-50%);
+  transform: translate(var(--x), -50%) scale(1);
+}
+
+.card-home:nth-last-child(1) {
+  --x: calc(-50% - 30px);
+  transform: translate(var(--x), -50%) scale(1.05);
+}
+
+.card-home:nth-last-child(1) img {
+  box-shadow: 0 1px 5px 5px rgba(46, 178, 255, 0.5);
+}
+
+.swap {
+  animation: swap 1.3s ease-out forwards;
+}
+
+@keyframes swap {
+  30% {
+    transform: translate(calc(var(--x) - 250px), -50%) scale(0.85) rotate(-5deg)
+      rotateY(65deg);
+  }
+  100% {
+    transform: translate(calc(var(--x) - 30px), -50%) scale(0.5);
+    z-index: -1;
+  }
+}
+
+/* Media queries for keyframes */
+
+@media (max-width: 1200px) {
+  @keyframes swap {
+    30% {
+      transform: translate(calc(var(--x) - 200px), -50%) scale(0.85)
+        rotate(-5deg) rotateY(65deg);
+    }
+
+    100% {
+      transform: translate(calc(var(--x) - 30px), -50%) scale(0.5);
+      z-index: -1;
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  @keyframes swap {
+    30% {
+      transform: translate(calc(var(--x) - 150px), -50%) scale(0.85)
+        rotate(-5deg) rotateY(65deg);
+    }
+
+    100% {
+      transform: translate(calc(var(--x) - 30px), -50%) scale(0.5);
+      z-index: -1;
+    }
+  }
+}
+
+/* Media queries for other classes */
+
+@media (max-width: 1200px) {
+  .content {
+    padding-left: 80px;
+  }
+
+  .content p {
+    padding-right: 40px;
+  }
+
+  .card-home {
+    width: 250px;
+    height: 380px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .content {
+    padding-left: 60px;
+  }
+
+  .content p {
+    line-height: 1.5;
+  }
+
+  .card-home {
+    width: 220px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 990px) {
+  .content p {
+    padding-right: 0;
+  }
+
+  .card-home {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 950px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 3fr;
+    grid-template-areas:
+      "stacked"
+      "content";
+  }
+
+  .content {
+    grid-area: content;
+    text-align: center;
+    padding: 0 90px;
+  }
+
+  .btn {
+    margin-bottom: 30px;
+  }
+
+  .stack {
+    grid-area: stacked;
+  }
+}
+
+@media (max-width: 650px) {
+  main {
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .content {
+    padding: 0 50px;
+  }
+
+  .content h1 {
+    padding-left: 0;
+  }
+
+  .btn {
+    padding: 8px 16px;
+  }
+
+  .card-home {
+    width: 180px;
+    height: 260px;
+  }
+}
+
+/* codepen */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);
+
+.snip1336 {
+  font-family: 'Poppins', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+  line-height: 1.4em;
+  background-color: #141414;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+.snip1336 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.snip1336 img {
+  max-width: 100%;
+  vertical-align: top;
+  opacity: 0.85;
+}
+.snip1336 figcaption {
+  width: 100%;
+  background-color: #141414;
+  padding: 25px;
+  position: relative;
+}
+.snip1336 figcaption:before {
+  position: absolute;
+  content: '';
+  bottom: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 55px 0 0 400px;
+  border-color: transparent transparent transparent #141414;
+}
+.snip1336 figcaption a {
+  padding: 5px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  margin: 10px 0;
+  display: inline-block;
+  opacity: 0.65;
+  width: 47%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all ease 0.3s;
+}
+.snip1336 figcaption a:hover {
+  opacity: 1;
+  background-color: var(--blue-800);
+  color: white;
+}
+.snip1336 .profile {
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left: 25px;
+  z-index: 1;
+  max-width: 90px;
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.snip1336 .follow {
+  margin-right: 4%;
+  border-color: var(--blue-500);
+  color: var(--blue-500);
+  border-radius: 20px;
+}
+.snip1336 h2 {
+  margin: 0 0 5px;
+  font-weight: 300;
+}
+.snip1336 h2 span {
+  display: block;
+  font-size: 0.7em;
+  color: var(--blue-500);
+}
+.snip1336 p {
+  margin: 0 0 10px;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+/* gallery */
+
+.gallery{
+    min-height: 100vh;
+    background:#eee;
+    padding-bottom: 100px;
+}
+
+.gallery .controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding:20px 0;
+    list-style: none;
+}
+
+.gallery .controls .buttons{
+    height:40px;
+    width: 140px;
+    background:#fff;
+    color:#141414;
+    font-size: 20px;
+    line-height: 40px;
+    cursor: pointer;
+    margin:20px;
+    box-shadow: 0 3px 5px rgba(0,0,0,.3);
+    text-align: center;
+    border-radius: .3em;
+}
+.gallery .controls .buttons:hover {
+  background-color: var(--blue-500);
+  color: #fff;
+  transition: all ease-in-out .3s;
+}
+
+.gallery .controls .buttons.active{
+    background: var(--blue-800);
+    color:#fff;
+}
+
+.gallery .image-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.gallery .image-container .image{
+    height:250px;
+    width: 350px;
+    overflow: hidden;
+    border:15px solid #fff;
+    box-shadow: 0 3px 5px rgba(0,0,0,.3);
+    margin: 20px;
+}
+
+.gallery .image-container .image img{
+    height: 100%;
+    width:100%;
+    object-fit: cover;
+    transition: all ease-in-out .3s;
+}
+
+.gallery .image-container .image:hover img{
+    transform: scale(1.2);
+}
